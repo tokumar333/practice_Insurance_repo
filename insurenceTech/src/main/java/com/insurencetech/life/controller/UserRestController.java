@@ -24,7 +24,11 @@ public class UserRestController {
 
     @Autowired
     private AuthenticationManager authManager;
-
+   
+    @GetMapping("/health")
+    public String health() {
+        return "UP";
+    }
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> registerUser(@RequestBody UserLogin user) {
 
@@ -72,3 +76,4 @@ public class UserRestController {
 
     }
 }
+
