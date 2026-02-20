@@ -9,10 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -24,11 +21,7 @@ public class UserRestController {
 
     @Autowired
     private AuthenticationManager authManager;
-   
-    @GetMapping("/health")
-    public String health() {
-        return "UP";
-    }
+
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> registerUser(@RequestBody UserLogin user) {
 
@@ -73,7 +66,10 @@ public class UserRestController {
                             "message", "Invalid credentials"
                     ));
         }
+    }
 
+    @GetMapping("/health")
+    public String health() {
+        return "UP";
     }
 }
-
